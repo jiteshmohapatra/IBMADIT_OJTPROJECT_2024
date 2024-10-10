@@ -11,8 +11,12 @@ Here are some screenshots of the WildHaven project in action:
 - **Species Database:**
   ![Species Database Screenshot](species_databases.png)
 
+
+- **Admin Dashboard:**
+  ![Species Database Screenshot](admin.png)
+
 - **Adopt a Species Page:**
-  ![Adopt a Species Screenshot](adoptions.pdf)
+  ![Adopt a Species Screenshot](adopt.png)
 
 - **Chatbot:**
   ![Data Visualization Screenshot](chatbot.png)
