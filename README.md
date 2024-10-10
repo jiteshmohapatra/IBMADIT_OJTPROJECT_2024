@@ -1,6 +1,6 @@
 # NSTI_BHUBANESWAR_TEAM2_IBM_INTERNSHIP_FSWD_JAVA_OJT2024
 # IBM INTERNSHIP: STRATS FROM 13-05-2024 TO 10-10-2024
-<img align= "right" src="https://github.com/jiteshmohapatra/TEAM2_IBM_INTERNSHIP_FSWD_JAVA_OJT2024/blob/1cc6e08f6db14d8471572b51733006bef1a5b450/IBM1.jpg" width="300" height="200" align-items="right">
+<img align= "right" src="https://github.com/jiteshmohapatra/IBMADIT_OJTPROJECT_2024/blob/9e51a1d9e9e97b2822059c3220268d20173794ab/IBM.jpg" width="300" height="200" align-items="right">
 ## 📸 Project Screenshots
 
 Here are some screenshots of the WildHaven project in action:
