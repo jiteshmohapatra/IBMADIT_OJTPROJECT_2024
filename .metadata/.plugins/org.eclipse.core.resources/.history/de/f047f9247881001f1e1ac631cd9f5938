@@ -1,0 +1,95 @@
+package ibm_internship;
+
+
+import java.util.Properties;
+import jakarta.mail.Message;
+import jakarta.mail.MessagingException;
+import jakarta.mail.PasswordAuthentication;
+import jakarta.mail.Session;
+import jakarta.mail.Transport;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.servlet.http.HttpServlet;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+
+public class ReportServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    
+
+
+    private void sendEmail(String toEmail, String userName, String userPassword) {
+        // SMTP server information
+        String host = "smtp.gmail.com";
+        final String fromEmail = "team.wildhaven@gmail.com"; 
+        final String emailPassword = "spvl dynb jlxm bmgn"; 
+
+        Properties props = new Properties();
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+
+        // Create a session with authenticator
+        Session session = Session.getInstance(props, new jakarta.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(fromEmail, emailPassword);
+            }
+        });
+
+        try {
+            // Create a MimeMessage object
+            Message message = new MimeMessage(session);
+
+            // Set From email
+            message.setFrom(new InternetAddress(fromEmail));
+
+            // Set To email
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
+
+            // Set email subject
+            message.setSubject("Welcome to Wildlife Conservation Portal");
+
+            // Set email content
+            String emailContent = "Hi " + userName + ",\n\n" +
+                    "Welcome to Wild Haven!\n" +
+                    "Thank you for joining our community of wildlife enthusiasts and conservationists.\n" +
+                    "We're excited to have you on board as we work together to protect and preserve nature's most beautiful creatures.\n\n" +
+                    "Here are your login details:\n" +
+                    "Email: " + toEmail + "\n" +
+                    "Password: " + userPassword + "\n\n" +
+                    "Here’s what you can do next:\n" +
+                    "- Explore wildlife events and updates\n" +
+                    "- Get involved in upcoming conservation projects\n" +
+                    "- Connect with fellow members and share your experiences\n" +
+                    "If you have any questions or need assistance, feel free to reach out to us at " + fromEmail + ".\n\n" +
+                    "Together, we can make a difference!\n\n" +
+                    "Best regards,\nThe Wild Haven Team.";
+
+            message.setText(emailContent);
+
+            // Send the email
+            Transport.send(message);
+            System.out.println("Email sent successfully to: " + toEmail);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashedBytes = md.digest(password.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashedBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Error hashing password: " + e.getMessage());
+        }
+    }
+}

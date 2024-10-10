@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>.BndtoolsJAREditorTempFiles</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>temp/10000001/aws-java-sdk-1.12.770.jar</name>
+			<type>2</type>
+			<locationURI>jarf:///file:/C:/Users/lenovo/eclipse-workspace/IBM_PROJECTS_OJT2024/src/main/webapp/WEB-INF/lib/aws-java-sdk-1.12.770.jar!/</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>

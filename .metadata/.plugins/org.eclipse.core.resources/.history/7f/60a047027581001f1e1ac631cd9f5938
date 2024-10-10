@@ -1,0 +1,79 @@
+package ibm_internship;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Properties;
+import jakarta.mail.*;
+import jakarta.mail.internet.*;
+
+@WebServlet("/submitReport")
+public class ReportServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Get form data
+        String fullName = request.getParameter("fullName");
+        String email = request.getParameter("email");
+        String incidentType = request.getParameter("incidentType");
+        String species = request.getParameter("species");
+        String location = request.getParameter("location");
+        String dateTime = request.getParameter("dateTime");
+        String description = request.getParameter("description");
+
+        // Compose email content
+        String emailContent = "Wildlife Report Details:\n\n" +
+                "Reporter Name: " + fullName + "\n" +
+                "Email: " + email + "\n" +
+                "Incident Type: " + incidentType + "\n" +
+                "Species: " + species + "\n" +
+                "Location: " + location + "\n" +
+                "Date and Time: " + dateTime + "\n" +
+                "Description: " + description;
+
+        // Call sendEmail method to send email
+        sendEmail(email, "Wildlife Incident Report", emailContent);
+
+        // Redirect back to the report.jsp or a confirmation page
+        response.sendRedirect("report.jsp?status=success");
+    }
+
+    private void sendEmail(String toEmail, String subject, String emailContent) {
+        // SMTP server configuration
+        String host = "smtp.gmail.com";
+        final String fromEmail = "team.wildhaven@gmail.com"; 
+        final String emailPassword = "spvl dynb jlxm bmgn"; 
+
+        Properties props = new Properties();
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+
+        // Create a session with authentication
+        Session session = Session.getInstance(props, new jakarta.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(fromEmail, emailPassword);
+            }
+        });
+
+        try {
+            // Create email
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(fromEmail));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
+            message.setSubject(subject);
+            message.setText(emailContent);
+
+            // Send email
+            Transport.send(message);
+            System.out.println("Email sent successfully to: " + toEmail);
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+}
