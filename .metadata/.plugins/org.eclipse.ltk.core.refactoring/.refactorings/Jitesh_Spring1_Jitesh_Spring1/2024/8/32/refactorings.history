@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring accessors="true" comment="Delete element from project &apos;Jitesh_Spring1_Jitesh_Spring1&apos;&#x0D;&#x0A;- Original project: &apos;Jitesh_Spring1_Jitesh_Spring1&apos;&#x0D;&#x0A;- Original element: &apos;Wildlife&apos;" description="Delete element" element1="src/main/resources/templates/Wildlife" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="1" stamp="1723186563042" subPackages="false" version="1.0"/>
-</session>
