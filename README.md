@@ -18,8 +18,7 @@ Here are some screenshots of the WildHaven project in action:
 - **Adopt a Species Page:**
   ![Adopt a Species Screenshot](adopt.png)
 
-- **Chatbot:**
-  ![Data Visualization Screenshot](chatbot.png)
+
 # WILD HAVEN
  WildHaven is a full-stack Java-based platform designed to promote wildlife conservation and provide tools for protecting endangered species. This project focuses on delivering a professional, responsive, and user-friendly experience through modern front-end and back-end technologies.
  
